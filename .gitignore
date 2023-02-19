@@ -1,7 +1,7 @@
 #USER ADDITIONS
 bin/*
 dev/*
-.DS_Sore
+*.DS_Sore
 
 # Logs
 logs
