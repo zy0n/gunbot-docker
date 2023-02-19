@@ -1,0 +1,12 @@
+{
+  "name": "gunbot-docker",
+  "version": "1.0.0",
+  "description": "Gunbot Docker Build",
+  "main": "index.js",
+  "scripts": {
+    "build": "docker build --pull --rm -f 'Dockerfile' -t gunbotdocker:latest '.'",
+    "compose": "docker compose -f 'docker-compose.yml' up -d --build"
+  },
+  "author": "zy0n.bear",
+  "license": "MIT"
+}
