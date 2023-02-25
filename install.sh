@@ -32,8 +32,6 @@ if [ "$(ls -A $storage)" ]; then
     chmod +x $gunbotbin
   fi
 
-
-
   echo "Starting Gunbot..."
   cd $gunbothome
   $gunbotbin

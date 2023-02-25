@@ -4,7 +4,7 @@
   "description": "Gunbot Docker Build",
   "main": "index.js",
   "scripts": {
-    "build": "docker build --pull --rm -f 'Dockerfile' -t gunbotdocker:latest '.'",
+    "build": "docker build --pull --rm -f 'Dockerfile' -t zy0nbear/gunbot:latest '.'",
     "compose": "docker compose -f 'docker-compose.yml' up -d --build"
   },
   "author": "zy0n.bear",

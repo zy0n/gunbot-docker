@@ -6,7 +6,7 @@ services:
     platform: linux/amd64
     stdin_open: true # docker run -i
     tty: true 
-    image: gunbotdocker:latest
+    image: zy0nbear/gunbot:latest
     command: "/opt/gunbot/install.sh"
     ports: 
       - 3001:5000
@@ -20,7 +20,7 @@ services:
     platform: linux/amd64
     stdin_open: true # docker run -i
     tty: true 
-    image: zyb0tdocker:latest
+    image: zy0nbear/zyb0t:latest
     command: "/opt/zybot/install.sh"
     volumes:
       - data:/data
