@@ -1,6 +1,6 @@
 
 FROM --platform="linux/amd64" debian:bookworm
-RUN apt-get update && apt-get install -y jq unzip openssl
+RUN apt-get update && apt-get install -y unzip openssl
 WORKDIR /opt/gunbot
 COPY bin/latest/gunthy_linux.zip install.sh ssl.config ./
 RUN chmod +x install.sh

@@ -20,11 +20,12 @@ gunbotbin=$gunbothome/gunthy-linux
 if [ "$(ls -A $storage)" ]; then
   # We have gunthy storage, link the executable.
 
-  if [ -d $tmpdir ]; then
-    # we have the temporary directory, move it
-    echo "Temp directory found"
-    mv $gunbotmp $gunbotbin
-  elif [ -d $gunbotdir ]; then # means we recreated a container, with existing storage attached
+  # if [ -d $tmpdir ]; then
+  #   # we have the temporary directory, move it
+  #   echo "Temp directory found"
+  #   mv $gunbotmp $gunbotbin
+  # el
+  if [ -d $gunbotdir ]; then # means we recreated a container, with existing storage attached
     echo "New container found"
 
     mv $gunbotcore $gunbotbin
@@ -36,13 +37,13 @@ if [ "$(ls -A $storage)" ]; then
   cd $gunbothome
   $gunbotbin
   # when we get here, execution has ended. cleanup container.
-  echo "Performing Cleanup..."
+  # echo "Performing Cleanup..."
 
-  mv $gunbotbin $tmpdir
+  # mv $gunbotbin $tmpdir
 else
   echo "Directory is empty. Moving $gunbotdir to $storage..."
-
-  openssl req -config /opt/gunbot/ssl.config -newkey rsa:2048 -nodes -keyout $gunbotdir/localhost.key -x509 -days 365 -out $gunbotdir/localhost.crt -extensions v3_req 2>/dev/null
+  echo "Installing Gunbot... This may take a few minutes."
+  openssl req -config $workdir/ssl.config -newkey rsa:2048 -nodes -keyout $gunbotdir/localhost.key -x509 -days 365 -out $gunbotdir/localhost.crt -extensions v3_req 2>/dev/null
   sed -i 's/"https": false/"https": true/' $gunbotdir/config.js
   
   chmod +x $gunbotcore
@@ -53,8 +54,8 @@ else
   cd $gunbothome
   $gunbotbin
   # when it gets here execution of gunbot ended. cleanup container
-  mkdir $tmpdir
-  mv $gunbotbin $tmpdir
-  echo "Performing Cleanup..."
+  # mkdir $tmpdir
+  # mv $gunbotbin $tmpdir
+  # echo "Performing Cleanup..."
 
 fi
