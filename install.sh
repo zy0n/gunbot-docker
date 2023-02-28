@@ -14,18 +14,10 @@ gunbotcore=$gunbotdir/gunthy-linux
 gunbothome=$storage/gunthy_linux
 gunbotbin=$gunbothome/gunthy-linux
 
-# cd $gunbotdir
-
 # Check if the directory is empty
 if [ "$(ls -A $storage)" ]; then
-  # We have gunthy storage, link the executable.
-
-  # if [ -d $tmpdir ]; then
-  #   # we have the temporary directory, move it
-  #   echo "Temp directory found"
-  #   mv $gunbotmp $gunbotbin
-  # el
-  if [ -d $gunbotdir ]; then # means we recreated a container, with existing storage attached
+  if [ -d $gunbotdir ]; then 
+    # means we recreated a container, with existing storage attached
     echo "New container found"
 
     mv $gunbotcore $gunbotbin
@@ -36,10 +28,7 @@ if [ "$(ls -A $storage)" ]; then
   echo "Starting Gunbot..."
   cd $gunbothome
   $gunbotbin
-  # when we get here, execution has ended. cleanup container.
-  # echo "Performing Cleanup..."
 
-  # mv $gunbotbin $tmpdir
 else
   echo "Directory is empty. Moving $gunbotdir to $storage..."
   echo "Installing Gunbot... This may take a few minutes."
@@ -53,9 +42,5 @@ else
   echo "Starting Gunbot..."
   cd $gunbothome
   $gunbotbin
-  # when it gets here execution of gunbot ended. cleanup container
-  # mkdir $tmpdir
-  # mv $gunbotbin $tmpdir
-  # echo "Performing Cleanup..."
 
 fi
